@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Checkout de Teste</title>
+</head>
+<body> 
+    <div id="elements"></div>
+    <script src="https://cdn.eduzzcdn.com/sun/bridge/bridge.js" async type="module"></script>
+    <script>
+      (function () {
+        const load = function () {
+            window.Eduzz.Checkout.init({
+              contentId: "2348696",
+              target: "elements",
+              errorCover: false
+            });
+        }
+        if (document.readyState === 'complete') {
+            load();
+            return;
+        }
+        window.addEventListener('load', load);
+      })();
+    </script>
+    <script>
+        (function() {
+             const utmParamQueryString = new URLSearchParams(window.location.search);
+             if (utmParamQueryString.toString()) {
+                  var navLinks = document.querySelectorAll('a');
+                  navLinks.forEach(function(item) {
+                       if (item.href.indexOf('sun.eduzz.com') !== -1) {
+                            if (item.href.indexOf('?') === -1) {
+                                 item.href += '?' + utmParamQueryString.toString();
+                            } else {
+                                 item.href += '&' + utmParamQueryString.toString();
+                            }
+                       }
+                  });
+             }
+        })();
+        </script>
+</body>
+</html>
